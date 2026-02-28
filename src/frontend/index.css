@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Deep cosmic dark theme */
+    --background: 0.13 0.025 265;
+    --foreground: 0.93 0.015 265;
+
+    --card: 0.16 0.028 265;
+    --card-foreground: 0.93 0.015 265;
+
+    --popover: 0.18 0.03 265;
+    --popover-foreground: 0.93 0.015 265;
+
+    /* Warm gold accent */
+    --primary: 0.78 0.135 75;
+    --primary-foreground: 0.12 0.025 265;
+
+    --secondary: 0.22 0.04 265;
+    --secondary-foreground: 0.85 0.02 265;
+
+    --muted: 0.2 0.03 265;
+    --muted-foreground: 0.6 0.03 265;
+
+    --accent: 0.25 0.05 265;
+    --accent-foreground: 0.93 0.015 265;
+
+    --destructive: 0.577 0.245 27;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.28 0.04 265;
+    --input: 0.22 0.035 265;
+    --ring: 0.78 0.135 75;
+
+    --chart-1: 0.78 0.135 75;
+    --chart-2: 0.7 0.12 160;
+    --chart-3: 0.65 0.15 200;
+    --chart-4: 0.72 0.18 30;
+    --chart-5: 0.68 0.15 290;
+
+    --sidebar: 0.12 0.022 265;
+    --sidebar-foreground: 0.9 0.015 265;
+    --sidebar-primary: 0.78 0.135 75;
+    --sidebar-primary-foreground: 0.12 0.022 265;
+    --sidebar-accent: 0.2 0.035 265;
+    --sidebar-accent-foreground: 0.9 0.015 265;
+    --sidebar-border: 0.25 0.035 265;
+    --sidebar-ring: 0.78 0.135 75;
+
+    /* Calendar-specific tokens */
+    --today-bg: 0.78 0.135 75;
+    --today-fg: 0.12 0.025 265;
+    --day-hover: 0.22 0.04 265;
+    --selected-bg: 0.35 0.07 265;
+    --grid-border: 0.25 0.038 265;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Outfit", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Subtle cosmic background pattern */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, oklch(0.22 0.06 265 / 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, oklch(0.18 0.04 230 / 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 10%, oklch(0.2 0.05 80 / 0.15) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Fraunces", serif;
+  }
+
+  .font-ui {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  /* RTL support for Arabic/Hebrew/Persian */
+  .rtl-text {
+    direction: rtl;
+    text-align: right;
+    unicode-bidi: embed;
+  }
+
+  /* Native script sizing */
+  .native-script {
+    font-size: 1.1em;
+    line-height: 1.3;
+  }
+
+  /* Calendar grid */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  .day-cell {
+    @apply rounded-md transition-all duration-150;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    position: relative;
+  }
+
+  .day-cell:hover:not(.day-empty) {
+    background-color: oklch(var(--day-hover));
+  }
+
+  .day-cell.today {
+    background-color: oklch(var(--today-bg));
+    color: oklch(var(--today-fg));
+    font-weight: 700;
+    box-shadow: 0 0 20px oklch(0.78 0.135 75 / 0.4);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: oklch(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: oklch(var(--border));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--muted-foreground));
+  }
+}
