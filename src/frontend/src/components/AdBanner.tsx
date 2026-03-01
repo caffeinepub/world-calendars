@@ -117,7 +117,11 @@ export function AdBanner({ variant, className }: AdBannerProps) {
             ad.accentClass,
           )}
           onClick={() => {
-            /* No-op placeholder */
+            window.open(
+              "https://www.instagram.com/swaraj_koparkar?igsh=MWRqNHJkOW95Mmx3eg==",
+              "_blank",
+              "noopener,noreferrer",
+            );
           }}
           asChild={false}
         >

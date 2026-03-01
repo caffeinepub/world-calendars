@@ -1,14 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Globe2, Menu, X } from "lucide-react";
+import { Globe2, Link2, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import type { CalendarEntry } from "./backend.d.ts";
 import { AdBanner } from "./components/AdBanner";
 import { AdSidebar } from "./components/AdSidebar";
+import { BioLinkPage } from "./components/BioLinkPage";
 import { CalendarSidebar } from "./components/CalendarSidebar";
 import { CalendarView } from "./components/CalendarView";
 import { LoadingScreen } from "./components/LoadingScreen";
+import { RequestAdRemoval } from "./components/RequestAdRemoval";
 import { useGetAllCalendarEntries } from "./hooks/useQueries";
 
 // Fallback static entries in case backend is loading
@@ -115,6 +117,58 @@ export default function App() {
   const { data: backendEntries, isLoading } = useGetAllCalendarEntries();
   const [selectedId, setSelectedId] = useState("gregorian");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [bioLinkOpen, setBioLinkOpen] = useState(false);
+
+  // Inject Adsterra ad script into footer
+  useEffect(() => {
+    const slot = document.getElementById("adsterra-footer-slot");
+    if (slot && !slot.querySelector("script[data-adsterra]")) {
+      const script = document.createElement("script");
+      script.src =
+        "https://pl28814381.effectivegatecpm.com/aa/41/b8/aa41b81759b5eb1244882078ccae7f8a.js";
+      script.setAttribute("data-adsterra", "true");
+      slot.appendChild(script);
+    }
+  }, []);
+
+  // Inject Adsterra effectivegatecpm ad unit (async) - header slot
+  useEffect(() => {
+    const slot = document.getElementById("adsterra-ecpm-header-slot");
+    if (slot && !slot.querySelector("script[data-adsterra-ecpm]")) {
+      const script = document.createElement("script");
+      script.async = true;
+      script.setAttribute("data-cfasync", "false");
+      script.src =
+        "https://pl28814524.effectivegatecpm.com/73d0547c819b58702bf24da07eea6927/invoke.js";
+      script.setAttribute("data-adsterra-ecpm", "true");
+      slot.appendChild(script);
+    }
+  }, []);
+
+  // Inject HighPerformanceFormat (HPF) ad script into banner slot
+  useEffect(() => {
+    const slot = document.getElementById("hpf-banner-slot");
+    if (slot && !slot.querySelector("script[data-hpf]")) {
+      // Set atOptions config
+      const configScript = document.createElement("script");
+      configScript.text = `
+        var atOptions = {
+          'key': '1bf46126ba1e152835245964a0e08fa0',
+          'format': 'iframe',
+          'height': 90,
+          'width': 728,
+          'params': {}
+        };
+      `;
+      slot.appendChild(configScript);
+      // Load the ad invoke script
+      const invokeScript = document.createElement("script");
+      invokeScript.src =
+        "https://www.highperformanceformat.com/1bf46126ba1e152835245964a0e08fa0/invoke.js";
+      invokeScript.setAttribute("data-hpf", "true");
+      slot.appendChild(invokeScript);
+    }
+  }, []);
 
   // Use backend entries when available, fall back to static
   const entries =
@@ -175,8 +229,50 @@ export default function App() {
           <div className="lg:hidden text-sm text-muted-foreground truncate max-w-[140px]">
             {selectedEntry?.displayName}
           </div>
+
+          {/* Request Ad Removal button */}
+          <RequestAdRemoval />
+
+          {/* My Links button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className={cn(
+              "flex-shrink-0 gap-1.5 font-ui text-xs font-semibold",
+              "border border-border/40 bg-card/40 hover:bg-card/70",
+              "text-muted-foreground hover:text-foreground",
+              "transition-all duration-200 hidden sm:flex",
+            )}
+            onClick={() => setBioLinkOpen(true)}
+            aria-label="Open bio links"
+          >
+            <Link2 className="w-3.5 h-3.5" />
+            My Links
+          </Button>
+          {/* Mobile icon-only version */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="flex-shrink-0 sm:hidden border border-border/40 bg-card/40 hover:bg-card/70"
+            onClick={() => setBioLinkOpen(true)}
+            aria-label="Open bio links"
+          >
+            <Link2 className="w-4 h-4" />
+          </Button>
         </div>
       </header>
+
+      {/* Adsterra Header Ad */}
+      <div
+        id="adsterra-ecpm-header-slot"
+        className="flex justify-center bg-card/20 py-1"
+      />
+
+      {/* HighPerformanceFormat Banner */}
+      <div
+        id="hpf-banner-slot"
+        className="flex justify-center bg-card/20 py-1"
+      />
 
       {/* Top Ad Banner */}
       <AdBanner variant="top" />
@@ -259,6 +355,9 @@ export default function App() {
 
       {/* Footer */}
       <footer className="flex-shrink-0 border-t border-border bg-card/30 px-6 py-3">
+        <div id="adsterra-footer-slot" />
+        <div id="container-73d0547c819b58702bf24da07eea6927" />
+
         <div className="flex items-center justify-between text-xs text-muted-foreground/50">
           <span>Displaying {entries.length} world calendar traditions</span>
           <span>
@@ -274,6 +373,9 @@ export default function App() {
           </span>
         </div>
       </footer>
+
+      {/* Bio Link Page */}
+      <BioLinkPage open={bioLinkOpen} onClose={() => setBioLinkOpen(false)} />
     </div>
   );
 }

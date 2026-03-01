@@ -101,7 +101,11 @@ export function AdSidebar({ className }: { className?: string }) {
             "text-chart-5 transition-all duration-200",
           )}
           onClick={() => {
-            /* No-op placeholder */
+            window.open(
+              "https://www.instagram.com/swaraj_koparkar?igsh=MWRqNHJkOW95Mmx3eg==",
+              "_blank",
+              "noopener,noreferrer",
+            );
           }}
         >
           Learn More
