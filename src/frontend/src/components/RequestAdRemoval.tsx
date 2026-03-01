@@ -153,7 +153,7 @@ export function RequestAdRemoval({ className }: RequestAdRemovalProps) {
                       className="text-4xl font-display font-bold leading-none"
                       style={{ color: "oklch(0.97 0.01 265)" }}
                     >
-                      ₹500
+                      ₹599
                     </span>
                   </div>
                   <span
@@ -180,7 +180,7 @@ export function RequestAdRemoval({ className }: RequestAdRemovalProps) {
                   </span>
                   <div className="rounded-xl overflow-hidden bg-white p-2 shadow-lg">
                     <img
-                      src="/assets/generated/gpay-qr-code-transparent.dim_300x300.png"
+                      src="/assets/uploads/GooglePay_QR-5-1--1.png"
                       alt="Google Pay QR Code"
                       className="w-40 h-40 object-contain"
                     />
