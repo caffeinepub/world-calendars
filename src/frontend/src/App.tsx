@@ -186,11 +186,14 @@ export default function App() {
     }
   }, []);
 
-  // Use backend entries when available, fall back to static
-  const entries =
-    backendEntries && backendEntries.length > 0
-      ? backendEntries
-      : STATIC_ENTRIES;
+  // Merge backend entries with static entries so backend-missing calendars
+  // (like Marathi and French) are always shown
+  const entries = (() => {
+    if (!backendEntries || backendEntries.length === 0) return STATIC_ENTRIES;
+    const backendIds = new Set(backendEntries.map((e) => e.id));
+    const missingStatic = STATIC_ENTRIES.filter((e) => !backendIds.has(e.id));
+    return [...backendEntries, ...missingStatic];
+  })();
   const selectedEntry = entries.find((e) => e.id === selectedId) ?? entries[0];
 
   // Close sidebar when screen becomes large
