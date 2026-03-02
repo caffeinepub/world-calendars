@@ -1325,6 +1325,312 @@ export const HOLIDAYS: Record<string, HolidayEntry[]> = {
     },
   ],
 
+  marathi: [
+    {
+      month: 1,
+      day: 14,
+      holiday: {
+        name: "Makar Sankranti",
+        nativeName: "मकर संक्रांती",
+        description:
+          "A major Marathi harvest festival marking the sun's transit into Capricorn, celebrated with til-gul sweets, kite-flying, and the exchange of sesame-jaggery laddoos.",
+        type: "religious",
+        color: "bg-amber-400",
+      },
+    },
+    {
+      month: 3,
+      day: 14,
+      holiday: {
+        name: "Holi",
+        nativeName: "होळी",
+        description:
+          "The vibrant Marathi festival of colors celebrating the triumph of good over evil and the arrival of spring, with bonfires (Holika Dahan) the night before.",
+        type: "religious",
+        color: "bg-pink-500",
+      },
+    },
+    {
+      month: 3,
+      day: 30,
+      holiday: {
+        name: "Gudi Padwa",
+        nativeName: "गुढी पाडवा",
+        description:
+          "The Marathi New Year — families erect a Gudi (a decorated bamboo staff with a bright cloth and neem leaves) outside their homes to usher in prosperity.",
+        type: "public",
+        color: "bg-orange-500",
+      },
+    },
+    {
+      month: 5,
+      day: 1,
+      holiday: {
+        name: "Maharashtra Day",
+        nativeName: "महाराष्ट्र दिन",
+        description:
+          "Celebrates the formation of the state of Maharashtra on May 1, 1960, following the Samyukta Maharashtra movement.",
+        type: "public",
+        color: "bg-orange-600",
+      },
+    },
+    {
+      month: 5,
+      day: 10,
+      holiday: {
+        name: "Akshaya Tritiya",
+        nativeName: "अक्षय्य तृतीया",
+        description:
+          "An auspicious day considered ideal for new beginnings, investments, and weddings; Maharashtrians traditionally buy gold and start new ventures.",
+        type: "religious",
+        color: "bg-yellow-500",
+      },
+    },
+    {
+      month: 7,
+      day: 17,
+      holiday: {
+        name: "Ashadhi Ekadashi",
+        nativeName: "आषाढी एकादशी",
+        description:
+          "A sacred pilgrimage day dedicated to Lord Vitthal of Pandharpur; millions of warkari devotees walk hundreds of kilometres to reach the temple.",
+        type: "religious",
+        color: "bg-amber-600",
+      },
+    },
+    {
+      month: 8,
+      day: 19,
+      holiday: {
+        name: "Narali Purnima",
+        nativeName: "नारळी पूर्णिमा",
+        description:
+          "Coconut Full Moon — the Marathi coastal festival marking the end of monsoon when fishermen offer coconuts to the sea god Varuna before resuming fishing.",
+        type: "traditional",
+        color: "bg-teal-500",
+      },
+    },
+    {
+      month: 9,
+      day: 7,
+      holiday: {
+        name: "Ganesh Chaturthi",
+        nativeName: "गणेश चतुर्थी",
+        description:
+          "Maharashtra's grandest festival celebrating Lord Ganesha's birth, marked by elaborate clay idols, ten days of music and dance, and a sea immersion procession.",
+        type: "religious",
+        color: "bg-amber-500",
+      },
+    },
+    {
+      month: 10,
+      day: 12,
+      holiday: {
+        name: "Dasara",
+        nativeName: "दसरा",
+        description:
+          "Vijayadashami — celebrates Lord Rama's victory over Ravana and Goddess Durga's victory over Mahishasura, with weapon worship (Shastra Puja) and cultural processions.",
+        type: "religious",
+        color: "bg-orange-600",
+      },
+    },
+    {
+      month: 10,
+      day: 17,
+      holiday: {
+        name: "Kojagiri Purnima",
+        nativeName: "कोजागरी पौर्णिमा",
+        description:
+          "The harvest full moon night when Maharashtrians offer milk to the moon goddess Lakshmi, stay awake all night playing games, and drink spiced milk.",
+        type: "traditional",
+        color: "bg-yellow-300",
+      },
+    },
+    {
+      month: 11,
+      day: 1,
+      holiday: {
+        name: "Diwali",
+        nativeName: "दीपावली",
+        description:
+          "The Festival of Lights — Maharashtrians celebrate Abhyanga Snan (ritual oil bath), Lakshmi Puja, and burst fireworks over five festive days.",
+        type: "religious",
+        color: "bg-yellow-500",
+      },
+    },
+    {
+      month: 11,
+      day: 11,
+      holiday: {
+        name: "Kartiki Ekadashi",
+        nativeName: "कार्तिकी एकादशी",
+        description:
+          "The second major Vari pilgrimage to Pandharpur; devotees walk to seek blessings from Lord Vitthal as the holy Kartik month reaches its auspicious eleventh day.",
+        type: "religious",
+        color: "bg-amber-600",
+      },
+    },
+  ],
+
+  french: [
+    {
+      month: 1,
+      day: 1,
+      holiday: {
+        name: "New Year's Day",
+        nativeName: "Jour de l'An",
+        description:
+          "The first day of the year, celebrated with festivities, fireworks at the Eiffel Tower, and gatherings across France.",
+        type: "public",
+        color: "bg-yellow-400",
+      },
+    },
+    {
+      month: 1,
+      day: 6,
+      holiday: {
+        name: "Epiphany",
+        nativeName: "Épiphanie",
+        description:
+          "Celebrates the visit of the Magi to the infant Jesus; French families share the Galette des Rois (King's Cake) with a hidden charm inside.",
+        type: "religious",
+        color: "bg-amber-500",
+      },
+    },
+    {
+      month: 2,
+      day: 14,
+      holiday: {
+        name: "Valentine's Day",
+        nativeName: "Saint-Valentin",
+        description:
+          "The feast day of Saint Valentine, widely celebrated in France as the city of love with roses, chocolates, and romantic dinners.",
+        type: "cultural",
+        color: "bg-rose-500",
+      },
+    },
+    {
+      month: 4,
+      day: 1,
+      holiday: {
+        name: "April Fools' Day",
+        nativeName: "Poisson d'Avril",
+        description:
+          "April Fish Day — French children tape paper fish to each other's backs as pranks; one of the most beloved and light-hearted French traditions.",
+        type: "cultural",
+        color: "bg-sky-400",
+      },
+    },
+    {
+      month: 4,
+      day: 21,
+      holiday: {
+        name: "Easter Monday",
+        nativeName: "Lundi de Pâques",
+        description:
+          "The day after Easter Sunday, a public holiday in France following midnight masses and egg hunts; traditionally associated with church bells dropping chocolates.",
+        type: "religious",
+        color: "bg-yellow-300",
+      },
+    },
+    {
+      month: 5,
+      day: 1,
+      holiday: {
+        name: "Labour Day",
+        nativeName: "Fête du Travail",
+        description:
+          "International Workers' Day — a French public holiday where workers march in unions; lily-of-the-valley (muguet) flowers are traditionally gifted for good luck.",
+        type: "public",
+        color: "bg-red-500",
+      },
+    },
+    {
+      month: 5,
+      day: 8,
+      holiday: {
+        name: "Victory in Europe Day",
+        nativeName: "Victoire 1945",
+        description:
+          "Celebrates the formal end of World War II in Europe on May 8, 1945; commemorated with ceremonies at the Arc de Triomphe and war memorials across France.",
+        type: "public",
+        color: "bg-blue-600",
+      },
+    },
+    {
+      month: 7,
+      day: 14,
+      holiday: {
+        name: "Bastille Day",
+        nativeName: "Fête Nationale",
+        description:
+          "France's national day commemorating the storming of the Bastille fortress in 1789, symbolising the French Revolution; celebrated with the world's oldest military parade on the Champs-Élysées.",
+        type: "public",
+        color: "bg-blue-500",
+      },
+    },
+    {
+      month: 8,
+      day: 15,
+      holiday: {
+        name: "Assumption of Mary",
+        nativeName: "Assomption de Marie",
+        description:
+          "A Catholic feast day celebrating the bodily assumption of the Virgin Mary into heaven; a public holiday marked by pilgrimages, processions, and family gatherings.",
+        type: "religious",
+        color: "bg-indigo-400",
+      },
+    },
+    {
+      month: 11,
+      day: 1,
+      holiday: {
+        name: "All Saints' Day",
+        nativeName: "La Toussaint",
+        description:
+          "A French public holiday for honouring all saints; families visit cemeteries to place chrysanthemums on graves, and children have a two-week autumn school holiday.",
+        type: "religious",
+        color: "bg-purple-500",
+      },
+    },
+    {
+      month: 11,
+      day: 11,
+      holiday: {
+        name: "Armistice Day",
+        nativeName: "Armistice de 1918",
+        description:
+          "Remembrance Day commemorating the armistice that ended World War I at the 11th hour of the 11th day of the 11th month of 1918; ceremonies at the Unknown Soldier's tomb under the Arc de Triomphe.",
+        type: "public",
+        color: "bg-red-700",
+      },
+    },
+    {
+      month: 12,
+      day: 25,
+      holiday: {
+        name: "Christmas Day",
+        nativeName: "Noël",
+        description:
+          "The most important Christian feast in France, celebrated with the Réveillon de Noël dinner on Christmas Eve, decorated trees, the Père Noël, and the bûche de Noël cake.",
+        type: "religious",
+        color: "bg-red-500",
+      },
+    },
+    {
+      month: 12,
+      day: 31,
+      holiday: {
+        name: "New Year's Eve",
+        nativeName: "Saint-Sylvestre",
+        description:
+          "Réveillon de la Saint-Sylvestre — French New Year's Eve celebrated with champagne, gala dinners, fireworks over the Eiffel Tower, and festive midnight kisses.",
+        type: "cultural",
+        color: "bg-indigo-400",
+      },
+    },
+  ],
+
   tibetan: [
     {
       month: 2,

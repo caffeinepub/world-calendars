@@ -40,6 +40,8 @@ const CALENDAR_TINTS: Record<string, string> = {
   japanese: "#1A2744",
   korean: "#0D5C5C",
   tibetan: "#800020",
+  marathi: "#FF6600",
+  french: "#002395",
 };
 
 function CalendarBackground({ id }: { id: string }) {
@@ -758,6 +760,139 @@ function CalendarBackground({ id }: { id: string }) {
           </defs>
           <rect width="100%" height="100%" fill="url(#tibetan-glow)" />
           <rect width="100%" height="100%" fill="url(#endless-knot)" />
+        </svg>
+      );
+
+    case "marathi":
+      return (
+        <svg
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <defs>
+            <radialGradient id="marathi-glow" cx="50%" cy="20%" r="60%">
+              <stop offset="0%" stopColor="#FF6600" stopOpacity="0.18" />
+              <stop offset="60%" stopColor="#FF6600" stopOpacity="0.05" />
+              <stop offset="100%" stopColor="#FF6600" stopOpacity="0" />
+            </radialGradient>
+            <pattern
+              id="marathi-rangoli"
+              x="0"
+              y="0"
+              width="100"
+              height="100"
+              patternUnits="userSpaceOnUse"
+            >
+              {/* Rangoli lotus pattern */}
+              <g
+                transform="translate(50,50)"
+                fill="none"
+                stroke="#FF6600"
+                strokeWidth="0.8"
+                strokeOpacity="0.18"
+              >
+                {/* Outer petals (8 lotus petals) */}
+                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+                  <path
+                    key={`outer-${angle}`}
+                    d={`M0,0 Q${Math.sin(((angle + 22.5) * Math.PI) / 180) * 24},${-Math.cos(((angle + 22.5) * Math.PI) / 180) * 24} ${Math.sin((angle * Math.PI) / 180) * 34},${-Math.cos((angle * Math.PI) / 180) * 34} Q${Math.sin(((angle - 22.5) * Math.PI) / 180) * 24},${-Math.cos(((angle - 22.5) * Math.PI) / 180) * 24} 0,0`}
+                    strokeOpacity="0.14"
+                  />
+                ))}
+                {/* Inner petals (8 small lotus petals) */}
+                {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map(
+                  (angle) => (
+                    <path
+                      key={`inner-${angle}`}
+                      d={`M0,0 Q${Math.sin(((angle + 15) * Math.PI) / 180) * 12},${-Math.cos(((angle + 15) * Math.PI) / 180) * 12} ${Math.sin((angle * Math.PI) / 180) * 18},${-Math.cos((angle * Math.PI) / 180) * 18} Q${Math.sin(((angle - 15) * Math.PI) / 180) * 12},${-Math.cos(((angle - 15) * Math.PI) / 180) * 12} 0,0`}
+                      strokeOpacity="0.12"
+                    />
+                  ),
+                )}
+                {/* Decorative concentric circles */}
+                <circle r="8" strokeOpacity="0.2" />
+                <circle r="20" strokeOpacity="0.1" strokeDasharray="2 3" />
+                <circle r="36" strokeOpacity="0.08" strokeDasharray="3 5" />
+                <circle r="44" strokeOpacity="0.06" strokeDasharray="1 4" />
+                {/* Dot accents at compass points */}
+                {[0, 90, 180, 270].map((angle) => (
+                  <circle
+                    key={`dot-${angle}`}
+                    cx={Math.sin((angle * Math.PI) / 180) * 36}
+                    cy={-Math.cos((angle * Math.PI) / 180) * 36}
+                    r="2"
+                    fill="#FF6600"
+                    fillOpacity="0.15"
+                    stroke="none"
+                  />
+                ))}
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#marathi-glow)" />
+          <rect width="100%" height="100%" fill="url(#marathi-rangoli)" />
+        </svg>
+      );
+
+    case "french":
+      return (
+        <svg
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <defs>
+            <radialGradient id="french-glow" cx="50%" cy="10%" r="55%">
+              <stop offset="0%" stopColor="#002395" stopOpacity="0.16" />
+              <stop offset="100%" stopColor="#002395" stopOpacity="0" />
+            </radialGradient>
+            <pattern
+              id="french-fleur"
+              x="0"
+              y="0"
+              width="72"
+              height="72"
+              patternUnits="userSpaceOnUse"
+            >
+              {/* Fleur-de-lis symbol */}
+              <g
+                transform="translate(36,36)"
+                fill="none"
+                stroke="#002395"
+                strokeWidth="0.8"
+                strokeOpacity="0.2"
+              >
+                {/* Central upright petal */}
+                <path d="M0,-20 Q6,-12 4,-4 Q0,0 -4,-4 Q-6,-12 0,-20Z" />
+                {/* Left petal */}
+                <path d="M-16,-4 Q-10,-8 -4,-4 Q-8,2 -14,4 Q-18,-2 -16,-4Z" />
+                {/* Right petal */}
+                <path d="M16,-4 Q10,-8 4,-4 Q8,2 14,4 Q18,-2 16,-4Z" />
+                {/* Horizontal band */}
+                <rect x="-14" y="2" width="28" height="3" rx="1" />
+                {/* Lower stem */}
+                <path d="M-4,5 Q-8,14 -6,20 Q0,16 6,20 Q8,14 4,5Z" />
+                {/* Top bud */}
+                <circle cx="0" cy="-20" r="2.5" strokeOpacity="0.18" />
+                {/* Connecting curves */}
+                <path d="M-4,-4 Q-2,2 0,4 Q2,2 4,-4" strokeOpacity="0.12" />
+              </g>
+            </pattern>
+            <linearGradient id="french-tricolor" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#002395" stopOpacity="0.06" />
+              <stop offset="33%" stopColor="#002395" stopOpacity="0.02" />
+              <stop offset="33%" stopColor="#FFFFFF" stopOpacity="0.04" />
+              <stop offset="66%" stopColor="#FFFFFF" stopOpacity="0.02" />
+              <stop offset="66%" stopColor="#ED2939" stopOpacity="0.04" />
+              <stop offset="100%" stopColor="#ED2939" stopOpacity="0.06" />
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#french-glow)" />
+          <rect width="100%" height="100%" fill="url(#french-tricolor)" />
+          <rect width="100%" height="100%" fill="url(#french-fleur)" />
         </svg>
       );
 

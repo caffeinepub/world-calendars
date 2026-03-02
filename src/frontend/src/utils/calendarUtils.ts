@@ -13,7 +13,9 @@ export type CalendarId =
   | "buddhist"
   | "japanese"
   | "korean"
-  | "tibetan";
+  | "tibetan"
+  | "marathi"
+  | "french";
 
 export interface CalendarConfig {
   intlCalendar: string;
@@ -106,6 +108,19 @@ export const CALENDAR_CONFIG: Record<string, CalendarConfig> = {
     locale: "bo",
     emoji: "🏔️",
     region: "Tibet",
+  },
+  marathi: {
+    intlCalendar: "indian",
+    locale: "mr",
+    numberingSystem: "deva",
+    emoji: "🌸",
+    region: "Maharashtra, India",
+  },
+  french: {
+    intlCalendar: "gregory",
+    locale: "fr-FR",
+    emoji: "🗼",
+    region: "France",
   },
 };
 

@@ -111,6 +111,22 @@ const STATIC_ENTRIES: CalendarEntry[] = [
     description:
       "Traditional Tibetan lunisolar calendar blending Indian Buddhist and Chinese influences, used for religious dates.",
   },
+  {
+    id: "marathi",
+    displayName: "Marathi (Panchang)",
+    nativeName: "मराठी पंचांग",
+    locale: "mr",
+    description:
+      "The traditional Marathi lunisolar calendar (Panchang) used in Maharashtra, India, governing festivals, auspicious dates, and cultural events.",
+  },
+  {
+    id: "french",
+    displayName: "French Republican",
+    nativeName: "Calendrier républicain",
+    locale: "fr-FR",
+    description:
+      "The French Republican Calendar was created during the French Revolution (1793) to replace the Gregorian calendar. It features 12 months of 30 days with names inspired by nature.",
+  },
 ];
 
 export default function App() {
