@@ -9,6 +9,7 @@ import { AdSidebar } from "./components/AdSidebar";
 import { BioLinkPage } from "./components/BioLinkPage";
 import { CalendarSidebar } from "./components/CalendarSidebar";
 import { CalendarView } from "./components/CalendarView";
+import { GregorianArticlePage } from "./components/GregorianArticlePage";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { RequestAdRemoval } from "./components/RequestAdRemoval";
 import { useGetAllCalendarEntries } from "./hooks/useQueries";
@@ -134,57 +135,11 @@ export default function App() {
   const [selectedId, setSelectedId] = useState("gregorian");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [bioLinkOpen, setBioLinkOpen] = useState(false);
+  const [gregorianArticleOpen, setGregorianArticleOpen] = useState(false);
 
-  // Inject Adsterra ad script into footer
-  useEffect(() => {
-    const slot = document.getElementById("adsterra-footer-slot");
-    if (slot && !slot.querySelector("script[data-adsterra]")) {
-      const script = document.createElement("script");
-      script.src =
-        "https://pl28814381.effectivegatecpm.com/aa/41/b8/aa41b81759b5eb1244882078ccae7f8a.js";
-      script.setAttribute("data-adsterra", "true");
-      slot.appendChild(script);
-    }
-  }, []);
-
-  // Inject Adsterra effectivegatecpm ad unit (async) - header slot
-  useEffect(() => {
-    const slot = document.getElementById("adsterra-ecpm-header-slot");
-    if (slot && !slot.querySelector("script[data-adsterra-ecpm]")) {
-      const script = document.createElement("script");
-      script.async = true;
-      script.setAttribute("data-cfasync", "false");
-      script.src =
-        "https://pl28814524.effectivegatecpm.com/73d0547c819b58702bf24da07eea6927/invoke.js";
-      script.setAttribute("data-adsterra-ecpm", "true");
-      slot.appendChild(script);
-    }
-  }, []);
-
-  // Inject HighPerformanceFormat (HPF) ad script into banner slot
-  useEffect(() => {
-    const slot = document.getElementById("hpf-banner-slot");
-    if (slot && !slot.querySelector("script[data-hpf]")) {
-      // Set atOptions config
-      const configScript = document.createElement("script");
-      configScript.text = `
-        var atOptions = {
-          'key': '1bf46126ba1e152835245964a0e08fa0',
-          'format': 'iframe',
-          'height': 90,
-          'width': 728,
-          'params': {}
-        };
-      `;
-      slot.appendChild(configScript);
-      // Load the ad invoke script
-      const invokeScript = document.createElement("script");
-      invokeScript.src =
-        "https://www.highperformanceformat.com/1bf46126ba1e152835245964a0e08fa0/invoke.js";
-      invokeScript.setAttribute("data-hpf", "true");
-      slot.appendChild(invokeScript);
-    }
-  }, []);
+  // Note: effectivegatecpm and highperformanceformat scripts removed
+  // because they trigger pop-under/new-tab behaviour on mobile.
+  // Google AdSense (ca-pub-1738717539808673) in index.html handles ads.
 
   // Merge backend entries with static entries so backend-missing calendars
   // (like Marathi and French) are always shown
@@ -281,18 +236,6 @@ export default function App() {
         </div>
       </header>
 
-      {/* Adsterra Header Ad */}
-      <div
-        id="adsterra-ecpm-header-slot"
-        className="flex justify-center bg-card/20 py-1"
-      />
-
-      {/* HighPerformanceFormat Banner */}
-      <div
-        id="hpf-banner-slot"
-        className="flex justify-center bg-card/20 py-1"
-      />
-
       {/* Top Ad Banner */}
       <AdBanner variant="top" />
 
@@ -356,7 +299,14 @@ export default function App() {
                 transition={{ duration: 0.25 }}
                 className="h-full"
               >
-                <CalendarView entry={selectedEntry} />
+                <CalendarView
+                  entry={selectedEntry}
+                  onReadArticle={
+                    selectedEntry.id === "gregorian"
+                      ? () => setGregorianArticleOpen(true)
+                      : undefined
+                  }
+                />
               </motion.div>
             ) : (
               <div className="h-full flex items-center justify-center">
@@ -374,9 +324,6 @@ export default function App() {
 
       {/* Footer */}
       <footer className="flex-shrink-0 border-t border-border bg-card/30 px-6 py-3">
-        <div id="adsterra-footer-slot" />
-        <div id="container-73d0547c819b58702bf24da07eea6927" />
-
         <div className="flex items-center justify-between text-xs text-muted-foreground/50">
           <span>Displaying {entries.length} world calendar traditions</span>
           <span>
@@ -395,6 +342,12 @@ export default function App() {
 
       {/* Bio Link Page */}
       <BioLinkPage open={bioLinkOpen} onClose={() => setBioLinkOpen(false)} />
+
+      {/* Gregorian History Article */}
+      <GregorianArticlePage
+        open={gregorianArticleOpen}
+        onClose={() => setGregorianArticleOpen(false)}
+      />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import {
+  BookOpen,
   Calendar,
   ChevronLeft,
   ChevronRight,
@@ -903,9 +904,10 @@ function CalendarBackground({ id }: { id: string }) {
 
 interface CalendarViewProps {
   entry: CalendarEntry;
+  onReadArticle?: () => void;
 }
 
-export function CalendarView({ entry }: CalendarViewProps) {
+export function CalendarView({ entry, onReadArticle }: CalendarViewProps) {
   const [viewDate, setViewDate] = useState(() => {
     const d = new Date();
     d.setDate(1);
@@ -1004,6 +1006,19 @@ export function CalendarView({ entry }: CalendarViewProps) {
                 <p className="text-sm text-muted-foreground mt-1 max-w-lg leading-relaxed">
                   {entry.description}
                 </p>
+              )}
+              {/* Read History button — only for Gregorian */}
+              {entry.id === "gregorian" && onReadArticle && (
+                <Button
+                  data-ocid="gregorian_article.open_modal_button"
+                  variant="outline"
+                  size="sm"
+                  onClick={onReadArticle}
+                  className="mt-3 gap-1.5 text-xs font-ui font-semibold border-border/60 hover:bg-accent hover:border-primary/40 hover:text-primary transition-all duration-150"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  Read History
+                </Button>
               )}
             </div>
 
